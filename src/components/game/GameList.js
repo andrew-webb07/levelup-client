@@ -10,6 +10,7 @@ export const GameList = (props) => {
 
     return (
         <article className="games">
+            <h1>Level Up Games</h1>
             {
                 games.map(game => {
                     return <section key={`game--${game.id}`} className="game">
