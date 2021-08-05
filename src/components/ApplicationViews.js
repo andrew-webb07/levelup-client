@@ -5,6 +5,9 @@ import { GameProvider } from "./game/GameProvider.js"
 import { GameForm} from "./game/GameForm.js"
 import { EventProvider } from "./event/EventProvider.js"
 import { EventList } from "./event/EventList.js"
+import { EventForm} from "./event/EventForm.js"
+import { GamerProvider } from "./gamer/GamerProvider.js"
+
 
 export const ApplicationViews = () => {
     return <>
@@ -14,6 +17,7 @@ export const ApplicationViews = () => {
         }}>
             <GameProvider>
                 <EventProvider>
+                    <GamerProvider>
                     <Route exact path="/">
                         <h1>LevelUp</h1>
                     </Route>
@@ -26,6 +30,10 @@ export const ApplicationViews = () => {
                     <Route exact path="/events">
                         <EventList />
                     </Route>
+                    <Route exact path="/events/new">
+                        <EventForm />
+                    </Route>
+                    </GamerProvider>
                 </EventProvider>
             </GameProvider>
         </main>
