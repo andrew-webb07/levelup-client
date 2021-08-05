@@ -5,7 +5,6 @@ export const GameContext = React.createContext()
 export const GameProvider = (props) => {
     const [ games, setGames ] = useState([])
     const [ gameTypes, setTypes ] = useState([])
-    const [ gamers, setGamers ] = useState([])
 
 
     const getGames = () => {

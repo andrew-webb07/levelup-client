@@ -101,8 +101,8 @@ export const GameForm = () => {
                         gameTypeId: parseInt(currentGame.gameTypeId),
                         description: currentGame.description,
                         numberOfPlayers: parseInt(currentGame.numberOfPlayers),
-                        maker: currentGame.maker,
-                        gamer: parseInt(localStorage.getItem("lu_token"))
+                        maker: currentGame.maker
+                        // gamer: parseInt(localStorage.getItem("lu_token"))
                     }
 
                     // Send POST request to your API
