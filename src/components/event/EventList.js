@@ -3,7 +3,7 @@ import { EventContext } from "./EventProvider.js"
 import { useHistory } from "react-router-dom"
 
 export const EventList = (props) => {
-    const { events, getEvents, joinEvent } = useContext(EventContext)
+    const { events, getEvents, joinEvent, leaveEvent } = useContext(EventContext)
     const history = useHistory()
 
     useEffect(() => {
@@ -37,9 +37,17 @@ export const EventList = (props) => {
                             }
                              at {event.time}
                         </div>
-                        <button className="btn btn-2"
-                                onClick={() => joinEvent(event.id)}
-                        >Join</button>
+                        {
+                            event.joined
+                                ? <button className="btn btn-3"
+                                    onClick={() => 
+                                    leaveEvent(event.id)}
+                                    >Leave</button>
+                                : <button className="btn btn-2"
+                                    onClick={() => joinEvent(event.id)
+                                    }
+                                    >Join</button>
+                        }
                     </section>
                 })
             }
