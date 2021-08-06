@@ -1,11 +1,13 @@
 import React, { useContext, useState, useEffect } from "react"
 import { GameContext } from "./GameProvider.js"
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 
-export const GameForm = () => {
+export const GameForm = (props) => {
     const history = useHistory()
-    const { createGame, getGameTypes, gameTypes } = useContext(GameContext)
+    const { createGame, getGameTypes, gameTypes, editGame, getGame } = useContext(GameContext)
+
+    const {gameId} = useParams()
 
     /*
         Since the input fields are bound to the values of
@@ -27,6 +29,21 @@ export const GameForm = () => {
     useEffect(() => {
         getGameTypes()
     }, [])
+
+    useEffect(() => {
+        if(gameId) {
+            getGame(gameId).then(game => {
+                console.log(game)
+                setCurrentGame({
+                    name: game.name,
+                    gameTypeId: game.game_type.id,
+                    description: game.description,
+                    numberOfPlayers: game.number_of_players,
+                    maker: game.maker
+                })
+            })
+        }
+    }, [gameId])
 
     const handleControlledInputChange = (event) => {
         const newGameState = { ...currentGame }
@@ -76,7 +93,7 @@ export const GameForm = () => {
                 <div className="form-group">
                     <label htmlFor="numberOfPlayers">Number of Players: </label>
                     <input type="text" name="numberOfPlayers" required autoFocus className="form-control"
-                        // value={currentGame.numberOfPlayers}
+                        value={currentGame.numberOfPlayers}
                         onChange={handleControlledInputChange}
                     />
                 </div>
@@ -90,8 +107,24 @@ export const GameForm = () => {
                     />
                 </div>
             </fieldset>
-
-            <button type="submit"
+            {
+                (gameId)
+                ? <button type="submit"
+                onClick={evt => {
+                    // Prevent form from being submitted
+                    evt.preventDefault()
+                    editGame({
+                        id: gameId,
+                        name: currentGame.name,
+                        gameTypeId: parseInt(currentGame.gameTypeId),
+                        description: currentGame.description,
+                        numberOfPlayers: parseInt(currentGame.numberOfPlayers),
+                        maker: currentGame.maker
+                    })
+                    .then(() => history.push("/games"))
+                }}
+                className="btn btn-primary">Edit</button>
+                : <button type="submit"
                 onClick={evt => {
                     // Prevent form from being submitted
                     evt.preventDefault()
@@ -104,12 +137,13 @@ export const GameForm = () => {
                         maker: currentGame.maker
                         // gamer: parseInt(localStorage.getItem("lu_token"))
                     }
-
                     // Send POST request to your API
                     createGame(game)
                         .then(() => history.push("/games"))
                 }}
                 className="btn btn-primary">Create</button>
+            }
+            
         </form>
     )
 }
