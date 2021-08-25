@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { EventContext } from "./EventProvider.js"
 import { GameContext } from "../game/GameProvider.js"
-import { GamerContext } from "../gamer/GamerProvider.js"
+import { GamerContext } from "../user/GamerProvider.js"
 
 
 export const EventForm = () => {

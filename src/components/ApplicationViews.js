@@ -6,7 +6,7 @@ import { GameForm} from "./game/GameForm.js"
 import { EventProvider } from "./event/EventProvider.js"
 import { EventList } from "./event/EventList.js"
 import { EventForm} from "./event/EventForm.js"
-import { GamerProvider } from "./gamer/GamerProvider.js"
+import { GamerProvider } from "./user/GamerProvider.js"
 import { ProfileProvider } from "./auth/ProfileProvider.js"
 import { Profile } from "./auth/Profile.js"
 
