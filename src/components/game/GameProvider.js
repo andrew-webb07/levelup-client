@@ -8,7 +8,7 @@ export const GameProvider = (props) => {
 
 
     const getGames = () => {
-        return fetch("http://localhost:8000/games", {
+        return fetch("https://ajw-levelup.herokuapp.com/games", {
             headers:{
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`
             }
@@ -18,7 +18,7 @@ export const GameProvider = (props) => {
     }
 
     const getGame = (gameId) => {
-        return fetch(`http://localhost:8000/games/${gameId}`, {
+        return fetch(`https://ajw-levelup.herokuapp.com/games/${gameId}`, {
             headers:{
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`
             }
@@ -27,7 +27,7 @@ export const GameProvider = (props) => {
     }
 
     const createGame = (game) => {
-        return fetch("http://localhost:8000/games", { 
+        return fetch("https://ajw-levelup.herokuapp.com/games", { 
             method: "POST",
             headers: {"Authorization": `Token ${localStorage.getItem("lu_token")}`,
                       "Content-Type": "application/json"               
@@ -37,7 +37,7 @@ export const GameProvider = (props) => {
     }
 
     const editGame = (game) => {
-        return fetch(`http://localhost:8000/games/${game.id}`, { 
+        return fetch(`https://ajw-levelup.herokuapp.com/games/${game.id}`, { 
             method: "PUT",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`,
@@ -48,14 +48,14 @@ export const GameProvider = (props) => {
     }
     
     const getGameTypes = () => {
-        return fetch("http://localhost:8000/gametypes", { 
+        return fetch("https://ajw-levelup.herokuapp.com/gametypes", { 
             headers: {"Authorization": `Token ${localStorage.getItem("lu_token")}`}})
             .then(response => response.json())
             .then(setTypes)
     }
 
     const getGamers = () => {
-        return fetch("http://localhost:8000/gametypes", { 
+        return fetch("https://ajw-levelup.herokuapp.com/gametypes", { 
             headers: {"Authorization": `Token ${localStorage.getItem("lu_token")}`}})
             .then(response => response.json())
             .then(setTypes)

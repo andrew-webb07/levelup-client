@@ -6,7 +6,7 @@ export const EventProvider = (props) => {
     const [ events, setEvents ] = useState([])
 
     const getEvents = () => {
-        return fetch("http://localhost:8000/events", {
+        return fetch("https://ajw-levelup.herokuapp.com/events", {
             headers:{
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`
             }
@@ -16,7 +16,7 @@ export const EventProvider = (props) => {
     }
 
     const createEvent = (event) => {
-        return fetch("http://localhost:8000/events", { 
+        return fetch("https://ajw-levelup.herokuapp.com/events", { 
             method: "POST",
             headers: {"Authorization": `Token ${localStorage.getItem("lu_token")}`,
                       "Content-Type": "application/json"               
@@ -26,7 +26,7 @@ export const EventProvider = (props) => {
     }
 
     const joinEvent = eventId => {
-        return fetch(`http://localhost:8000/events/${eventId}/signup`, {
+        return fetch(`https://ajw-levelup.herokuapp.com/events/${eventId}/signup`, {
             method: "POST",
             headers:{
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`
@@ -37,7 +37,7 @@ export const EventProvider = (props) => {
     }
 
     const leaveEvent = eventId => {
-        return fetch(`http://localhost:8000/events/${eventId}/signup`, {
+        return fetch(`https://ajw-levelup.herokuapp.com/events/${eventId}/signup`, {
             method: "DELETE",
             headers:{
                 "Authorization": `Token ${localStorage.getItem("lu_token")}`
