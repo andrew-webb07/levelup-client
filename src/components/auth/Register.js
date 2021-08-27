@@ -5,6 +5,7 @@ import "./Auth.css"
 export const Register = (props) => {
     const firstName = React.createRef()
     const lastName = React.createRef()
+    const username = React.createRef()
     const email = React.createRef()
     const bio = React.createRef()
     const password = React.createRef()
@@ -16,7 +17,7 @@ export const Register = (props) => {
 
         if (password.current.value === verifyPassword.current.value) {
             const newUser = {
-                "username": email.current.value,
+                "username": username.current.value,
                 "first_name": firstName.current.value,
                 "last_name": lastName.current.value,
                 "bio": bio.current.value,
@@ -61,6 +62,10 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="lastName"> Last Name </label>
                     <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="username"> Username </label>
+                    <input ref={username} type="username" name="username" className="form-control" placeholder="Username" required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputEmail"> Email address </label>

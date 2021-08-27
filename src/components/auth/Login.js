@@ -45,7 +45,7 @@ export const Login = props => {
                     <h1>Level Up</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
-                        <label htmlFor="inputUsername"> Username address </label>
+                        <label htmlFor="inputUsername"> Username </label>
                         <input ref={username} type="username" id="username" className="form-control"  placeholder="Username address" required autoFocus />
                     </fieldset>
                     <fieldset>
