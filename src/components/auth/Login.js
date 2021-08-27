@@ -4,7 +4,7 @@ import "./Auth.css"
 
 
 export const Login = props => {
-    const email = React.createRef()
+    const username = React.createRef()
     const password = React.createRef()
     const invalidDialog = React.createRef()
 
@@ -18,7 +18,7 @@ export const Login = props => {
                 "Accept": "application/json"
             },
             body: JSON.stringify({
-                username: email.current.value,
+                username: username.current.value,
                 password: password.current.value
             })
         })
@@ -37,7 +37,7 @@ export const Login = props => {
     return (
         <main className="container--login">
             <dialog className="dialog dialog--auth" ref={invalidDialog}>
-                <div>Email or password was not valid.</div>
+                <div>Username or password was not valid.</div>
                 <button className="button--close" onClick={e => invalidDialog.current.close()}>Close</button>
             </dialog>
             <section>
@@ -45,8 +45,8 @@ export const Login = props => {
                     <h1>Level Up</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input ref={email} type="email" id="email" className="form-control"  placeholder="Email address" required autoFocus />
+                        <label htmlFor="inputUsername"> Username address </label>
+                        <input ref={username} type="username" id="username" className="form-control"  placeholder="Username address" required autoFocus />
                     </fieldset>
                     <fieldset>
                         <label htmlFor="inputPassword"> Password </label>
